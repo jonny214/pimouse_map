@@ -1,0 +1,14 @@
+<launch>
+    <include file="$(find raspimouse_ros_2)/launch/raspimouse.launch">
+    </include>
+
+    <node pkg="rosservice" type="rosservice" name="global_loc" args="call /motor_on" />
+
+    <include file="$(find joy_to_twist)/launch/joy_to_twist.launch">
+    </include>
+    
+    <include file="$(find rplidar_ros)/launch/rplidar.launch">
+        <param name="frame_id" value="base_link" />
+    </include>
+
+</launch>
